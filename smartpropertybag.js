@@ -46,7 +46,8 @@ smartpropertybag.prototype.defineSmartProperty = function(propertyName, defaultV
 				break;
 
 			default:
-				break
+        throw new Error('typeof ' + valueType + ' is not currently supported!');
+				break;
 		}
 	} else {
 		descriptor.value = defaultValue;
