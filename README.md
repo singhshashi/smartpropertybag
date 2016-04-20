@@ -1,27 +1,41 @@
 # smartpropertybag
 Easily define properties on a js object which can be persisted using localStorage.
 
-I noticed a lot of code repetition when I was trying to define properties on a js object which could persist in the localStorage. This can be easily defined now in a single line. 
 ```
-var obj = new smartpropertybag();
+var smartypropertybag = require('smartpropertybag');
 
-obj.defineSmartProperty(propName,defaultValue,persist)
+var smartPropBag = new smartpropertybag();
+
+smartPropBag.defineSmartProperty(propName,defaultValue,persist);
+
 ```
-e.g.
+
+I noticed a lot of code repetition when I was trying to define properties on a js object which could persist in the localStorage. This can be easily defined now in a single line. 
+
+For example, 
+
 ```
 State = {
  get timeElapsedInSeconds() {
-    var result = parseInt(localStorage.getItem(Constants.KEY_TIME_ELAPSED_IN_SECONDS));
+    var result = parseInt(localStorage.getItem('timeElapsedInSeconds'));
     return isNaN(result) ? 0 : result;
   },
   set timeElapsedInSeconds(value) {
-    localStorage.setItem(Constants.KEY_TIME_ELAPSED_IN_SECONDS, value);
-  }
+    localStorage.setItem('timeElapsedInSeconds', value);
+  },
+ get todoItems() {
+    return localStorage.getItem('todoItems) != null ?
+      JSON.parse(localStorage.getItem('todoItems)) :[];
+  },
+  set todoItems(value) {
+    localStorage.setItem('todoItems', JSON.stringify(value));
+  },
 }
 ```
 can now be written as 
 ```
 var State = new smartpropertybag();
 
-State.defineSmartProperty(Constants.KEY_TIME_ELAPSED_IN_SECONDS,0,true) 
+State.defineSmartProperty('timeElapsedInSeconds',0,true);
+State.defineSmartProperty('todoItems',[],true);
 ```
