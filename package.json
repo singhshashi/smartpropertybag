@@ -1,6 +1,6 @@
 {
   "name": "smartpropertybag",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Easily define properties on a js object which can be persisted using localStorage",
   "main": "smartpropertybag.js",
   "scripts": {
