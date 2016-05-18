@@ -13,7 +13,7 @@ smartpropertybag.prototype.defineSmartProperty = function(propertyName, defaultV
 		switch (valueType) {
 			case "boolean":
 				descriptor.get = function() {
-					return localStorage.getItem(propertyName) != null ? Boolean(localStorage.getItem(propertyName)):defaultValue;
+					return localStorage.getItem(propertyName) != null ? JSON.parse(localStorage.getItem(propertyName)):defaultValue;
 				};
 				descriptor.set = function(value) {
 					localStorage.setItem(propertyName,value);
