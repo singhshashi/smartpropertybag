@@ -39,3 +39,7 @@ var State = new smartpropertybag();
 State.defineSmartProperty('timeElapsedInSeconds',0,true);
 State.defineSmartProperty('todoItems',[],true);
 ```
+
+# Bug Fixes:
+
+1. Incorrect boolean value returned https://github.com/singhshashi/smartpropertybag/issues/1
